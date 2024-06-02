@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Irfan is Me</title>
+    <style>
+        /* Sidebar Styles */
+        .sidebar {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+            top: 0;
+            left: -200px;
+            background-color: #000000;
+            padding-top: 20px;
+            transition: left 0.3s ease;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar a {
+            padding: 10px 15px;
+            text-decoration: none;
+            font-size: 18px;
+            color: white;
+            display: block;
+            border-radius: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar a:hover {
+            background-color: #555;
+        }
+
+        /* Content Styles */
+        .content {
+            margin-left: 20px;
+            padding: 20px;
+            background-color: #EC0000;
+            transition: margin-left 0.3s ease;
+            border-radius: 20px;
+            color: white;
+            max-width: 800px;
+            margin: 40px auto;
+            text-align: center;
+        }
+
+        .content.active {
+            margin-left: 220px;
+        }
+
+        .content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            margin: 20px 0;
+        }
+
+        /* Overall Background */
+        body {
+            background-color: #000000;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s ease;
+        }
+
+        body.sidebar-active {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Toggle Button Styles */
+        #checkbox {
+            display: none;
+        }
+
+        .toggle {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition-duration: .5s;
+            background-color: #3b82f6;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .bars {
+            width: 70%;
+            height: 4px;
+            background-color: white;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        #bar2 {
+            width: 100%;
+        }
+
+        #checkbox:checked + .toggle .bars {
+            position: absolute;
+        }
+
+        #checkbox:checked + .toggle #bar2 {
+            transform: scaleX(0);
+        }
+
+        #checkbox:checked + .toggle #bar1 {
+            width: 100%;
+            transform: rotate(45deg);
+        }
+
+        #checkbox:checked + .toggle #bar3 {
+            width: 100%;
+            transform: rotate(-45deg);
+        }
+
+        #checkbox:checked + .toggle {
+            transform: rotate(180deg);
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #000000;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar" id="sidebar">
+        <a href="index.html">Main Page</a>
+        <a href="about.html">Personal Information</a>
+        <a href="education.html">Education</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="content" id="content">
+        <h1>Welcome to My Website</h1>
+        <img src="Stock Images Web/Irfan_3.jpg" alt="Centered Image">
+        <p>Assalamualaikum and greetings to all users. This website will tell you a little about me, and I hope you enjoy my first webpage.</p>
+    </div>
+
+    <footer>
+        &copy; 2024 Irfan Masuri Website.
+    </footer>
+
+    <input type="checkbox" id="checkbox">
+    <label for="checkbox" class="toggle">
+        <div class="bars" id="bar1"></div>
+        <div class="bars" id="bar2"></div>
+        <div class="bars" id="bar3"></div>
+    </label>
+
+    <script>
+        var checkbox = document.getElementById('checkbox');
+        checkbox.addEventListener('change', function() {
+            var sidebar = document.getElementById('sidebar');
+            var content = document.getElementById('content');
+            var body = document.body;
+
+            sidebar.classList.toggle('active');
+            content.classList.toggle('active');
+            body.classList.toggle('sidebar-active');
+        });
+    </script>
+
+</body>
+</html>
